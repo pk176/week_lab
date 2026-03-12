@@ -47,3 +47,21 @@ This directory documents the purpose and behavior of each COBOL program in the r
 ---
 
 Feel free to update this documentation as the code evolves or additional business rules are introduced.
+
+sequenceDiagram
+    participant User
+    participant MainProgram
+    participant Operations
+    participant DataProgram
+
+    User->>MainProgram: selects menu option (1‑4)
+    MainProgram->>Operations: CALL 'Operations' with op code
+    Operations->>DataProgram: CALL 'DataProgram' USING 'READ', balance
+    DataProgram-->>Operations: return current balance
+    alt credit or debit
+        Operations->>Operations: compute new balance
+        Operations->>DataProgram: CALL 'DataProgram' USING 'WRITE', new balance
+        DataProgram-->>Operations: acknowledge write
+    end
+    Operations-->>MainProgram: display result
+    MainProgram-->>User: output / prompt
