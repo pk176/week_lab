@@ -48,6 +48,9 @@ This directory documents the purpose and behavior of each COBOL program in the r
 
 Feel free to update this documentation as the code evolves or additional business rules are introduced.
 
+## Sequence Diagram
+
+```mermaid
 sequenceDiagram
     participant User
     participant MainProgram
@@ -65,3 +68,4 @@ sequenceDiagram
     end
     Operations-->>MainProgram: display result
     MainProgram-->>User: output / prompt
+```
